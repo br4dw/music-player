@@ -1,0 +1,39 @@
+@font-face {
+    font-family: strawford;
+    src: url('../fonts/strawford.ttf');
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+body {
+    padding: 0;
+    background-color: #16161a;
+    font-family: strawford;
+}
+
+.centered {
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.spacer {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+/* main {
+    text-align: center;
+    max-width: 240px;
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    main {
+        max-width: none;
+    }
+} */
+
