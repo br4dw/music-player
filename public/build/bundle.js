@@ -59,6 +59,9 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function empty() {
+        return text('');
+    }
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
@@ -388,69 +391,223 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
+    	child_ctx[22] = list[i];
     	return child_ctx;
     }
 
-    // (287:3) {#each files as file}
-    function create_each_block(ctx) {
-    	let div;
-    	let p;
-    	let t0_value = /*file*/ ctx[19] + "";
-    	let t0;
-    	let t1;
-    	let img;
-    	let img_id_value;
-    	let img_src_value;
-    	let t2;
-    	let mounted;
-    	let dispose;
+    // (115:6) {:else}
+    function create_else_block(ctx) {
+    	let each_1_anchor;
+    	let each_value = /*files*/ ctx[2];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
 
-    	function click_handler() {
-    		return /*click_handler*/ ctx[8](/*file*/ ctx[19]);
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
     	}
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			p = element("p");
-    			t0 = text(t0_value);
-    			t1 = space();
-    			img = element("img");
-    			t2 = space();
-    			attr_dev(p, "class", "file-name svelte-tfppfv");
-    			add_location(p, file, 288, 5, 6843);
-    			attr_dev(img, "id", img_id_value = /*file*/ ctx[19]);
-    			attr_dev(img, "class", "icon svelte-tfppfv");
-    			if (!src_url_equal(img.src, img_src_value = "../static/icons/play.svg")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "Play");
-    			add_location(img, file, 289, 5, 6881);
-    			attr_dev(div, "class", "file svelte-tfppfv");
-    			add_location(div, file, 287, 4, 6818);
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, p);
-    			append_dev(p, t0);
-    			append_dev(div, t1);
-    			append_dev(div, img);
-    			append_dev(div, t2);
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*files, player*/ 516) {
+    				each_value = /*files*/ ctx[2];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(115:6) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (108:6) {#if directoryChanging}
+    function create_if_block(ctx) {
+    	let div1;
+    	let div0;
+    	let h2;
+    	let t1;
+    	let if_block = /*currentFile*/ ctx[1] && create_if_block_1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			h2 = element("h2");
+    			h2.textContent = "Loading files.. Please wait";
+    			t1 = space();
+    			if (if_block) if_block.c();
+    			add_location(h2, file, 109, 35, 3685);
+    			attr_dev(div0, "class", "loading-files");
+    			add_location(div0, file, 109, 8, 3658);
+    			attr_dev(div1, "class", "file svelte-1vmipr5");
+    			add_location(div1, file, 108, 6, 3630);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    			append_dev(div0, h2);
+    			append_dev(div1, t1);
+    			if (if_block) if_block.m(div1, null);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*currentFile*/ ctx[1]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block_1(ctx);
+    					if_block.c();
+    					if_block.m(div1, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    			if (if_block) if_block.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(108:6) {#if directoryChanging}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (116:8) {#each files as file}
+    function create_each_block(ctx) {
+    	let div1;
+    	let div0;
+    	let span;
+    	let t0_value = /*file*/ ctx[22].filtered + "";
+    	let t0;
+    	let t1;
+    	let img0;
+    	let img0_id_value;
+    	let img0_src_value;
+    	let t2;
+    	let img1;
+    	let img1_id_value;
+    	let img1_src_value;
+    	let t3;
+    	let mounted;
+    	let dispose;
+
+    	function click_handler() {
+    		return /*click_handler*/ ctx[11](/*file*/ ctx[22]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			span = element("span");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			img0 = element("img");
+    			t2 = space();
+    			img1 = element("img");
+    			t3 = space();
+    			attr_dev(span, "class", "file-name svelte-1vmipr5");
+    			add_location(span, file, 118, 14, 3998);
+    			attr_dev(div0, "class", "file-header svelte-1vmipr5");
+    			add_location(div0, file, 117, 12, 3957);
+    			attr_dev(img0, "id", img0_id_value = /*file*/ ctx[22].raw + "-art");
+    			attr_dev(img0, "class", "album-art thumbnail svelte-1vmipr5");
+    			if (!src_url_equal(img0.src, img0_src_value = /*file*/ ctx[22].thumb)) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "Art");
+    			add_location(img0, file, 120, 12, 4078);
+    			attr_dev(img1, "id", img1_id_value = /*file*/ ctx[22].raw);
+    			attr_dev(img1, "class", "icon file-play svelte-1vmipr5");
+    			if (!src_url_equal(img1.src, img1_src_value = "../static/icons/play.svg")) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "Play");
+    			add_location(img1, file, 121, 12, 4177);
+    			attr_dev(div1, "class", "file svelte-1vmipr5");
+    			add_location(div1, file, 116, 10, 3925);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    			append_dev(div0, span);
+    			append_dev(span, t0);
+    			append_dev(div1, t1);
+    			append_dev(div1, img0);
+    			append_dev(div1, t2);
+    			append_dev(div1, img1);
+    			append_dev(div1, t3);
 
     			if (!mounted) {
-    				dispose = listen_dev(img, "click", click_handler, false, false, false);
+    				dispose = listen_dev(img1, "click", click_handler, false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*files*/ 1 && t0_value !== (t0_value = /*file*/ ctx[19] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*files*/ 4 && t0_value !== (t0_value = /*file*/ ctx[22].filtered + "")) set_data_dev(t0, t0_value);
 
-    			if (dirty & /*files*/ 1 && img_id_value !== (img_id_value = /*file*/ ctx[19])) {
-    				attr_dev(img, "id", img_id_value);
+    			if (dirty & /*files*/ 4 && img0_id_value !== (img0_id_value = /*file*/ ctx[22].raw + "-art")) {
+    				attr_dev(img0, "id", img0_id_value);
+    			}
+
+    			if (dirty & /*files*/ 4 && !src_url_equal(img0.src, img0_src_value = /*file*/ ctx[22].thumb)) {
+    				attr_dev(img0, "src", img0_src_value);
+    			}
+
+    			if (dirty & /*files*/ 4 && img1_id_value !== (img1_id_value = /*file*/ ctx[22].raw)) {
+    				attr_dev(img1, "id", img1_id_value);
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     			mounted = false;
     			dispose();
     		}
@@ -460,7 +617,45 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(287:3) {#each files as file}",
+    		source: "(116:8) {#each files as file}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (111:8) {#if currentFile}
+    function create_if_block_1(ctx) {
+    	let div;
+    	let t0;
+    	let t1;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			t0 = text("Loading Metadata for ");
+    			t1 = text(/*currentFile*/ ctx[1]);
+    			attr_dev(div, "class", "loaded-file-meta svelte-1vmipr5");
+    			add_location(div, file, 111, 10, 3766);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*currentFile*/ 2) set_data_dev(t1, /*currentFile*/ ctx[1]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(111:8) {#if currentFile}",
     		ctx
     	});
 
@@ -494,9 +689,9 @@ var app = (function () {
     	let t8;
     	let h20;
 
-    	let t9_value = (/*files*/ ctx[0].length < 1
-    	? 'No suitable files have been found or no folder has been selected...'
-    	: '') + "";
+    	let t9_value = (/*files*/ ctx[2].length < 1
+    	? "No suitable files have been found or no folder has been selected..."
+    	: "") + "";
 
     	let t9;
     	let t10;
@@ -542,13 +737,14 @@ var app = (function () {
     	let div15;
     	let mounted;
     	let dispose;
-    	let each_value = /*files*/ ctx[0];
-    	validate_each_argument(each_value);
-    	let each_blocks = [];
 
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	function select_block_type(ctx, dirty) {
+    		if (/*directoryChanging*/ ctx[0]) return create_if_block;
+    		return create_else_block;
     	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
 
     	const block = {
     		c: function create() {
@@ -568,7 +764,7 @@ var app = (function () {
     			div3 = element("div");
     			label = element("label");
     			input0 = element("input");
-    			t5 = text("\r\n\t\t\t\tSelect music folder");
+    			t5 = text("\r\n        Select music folder");
     			t6 = space();
     			div7 = element("div");
     			div6 = element("div");
@@ -579,11 +775,7 @@ var app = (function () {
     			t9 = text(t9_value);
     			t10 = space();
     			div5 = element("div");
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
+    			if_block.c();
     			t11 = space();
     			footer = element("footer");
     			div8 = element("div");
@@ -621,116 +813,120 @@ var app = (function () {
     			t26 = space();
     			div15 = element("div");
     			div15.textContent = "00:00";
-    			attr_dev(img0, "class", "icon title-icon control-icon svelte-tfppfv");
+    			attr_dev(img0, "class", "icon title-icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img0.src, img0_src_value = "../static/icons/minimise.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "-");
-    			add_location(img0, file, 259, 1, 5830);
-    			attr_dev(img1, "class", "icon title-icon control-icon svelte-tfppfv");
+    			add_location(img0, file, 80, 2, 2590);
+    			attr_dev(img1, "class", "icon title-icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img1.src, img1_src_value = "../static/icons/maximise.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "[]");
-    			add_location(img1, file, 260, 1, 5938);
-    			attr_dev(img2, "class", "icon title-icon control-icon svelte-tfppfv");
+    			add_location(img1, file, 81, 2, 2701);
+    			attr_dev(img2, "class", "icon title-icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img2.src, img2_src_value = "../static/icons/close.svg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "x");
-    			add_location(img2, file, 261, 1, 6047);
-    			attr_dev(div0, "class", "title-container svelte-tfppfv");
-    			add_location(div0, file, 258, 0, 5798);
-    			attr_dev(div1, "class", "nav-item svelte-tfppfv");
-    			add_location(div1, file, 267, 2, 6224);
-    			attr_dev(div2, "class", "left svelte-tfppfv");
-    			add_location(div2, file, 266, 1, 6202);
+    			add_location(img2, file, 82, 2, 2813);
+    			attr_dev(div0, "class", "title-container svelte-1vmipr5");
+    			add_location(div0, file, 79, 0, 2557);
+    			attr_dev(div1, "class", "nav-item svelte-1vmipr5");
+    			add_location(div1, file, 88, 4, 2995);
+    			attr_dev(div2, "class", "left svelte-1vmipr5");
+    			add_location(div2, file, 87, 2, 2971);
     			attr_dev(input0, "type", "file");
     			attr_dev(input0, "webkitdirectory", "true");
     			attr_dev(input0, "directory", "");
-    			attr_dev(input0, "class", "svelte-tfppfv");
-    			add_location(input0, file, 273, 4, 6386);
-    			attr_dev(label, "class", "main-button svelte-tfppfv");
-    			add_location(label, file, 272, 3, 6353);
-    			attr_dev(div3, "class", "nav-item svelte-tfppfv");
-    			add_location(div3, file, 270, 2, 6299);
-    			attr_dev(div4, "class", "right svelte-tfppfv");
-    			add_location(div4, file, 269, 1, 6276);
-    			attr_dev(nav, "class", "topnav svelte-tfppfv");
-    			add_location(nav, file, 265, 0, 6179);
-    			attr_dev(h1, "class", "title svelte-tfppfv");
-    			add_location(h1, file, 282, 2, 6585);
-    			attr_dev(h20, "class", "subtitle svelte-tfppfv");
-    			add_location(h20, file, 283, 2, 6624);
-    			attr_dev(div5, "class", "files svelte-tfppfv");
-    			add_location(div5, file, 285, 2, 6767);
+    			attr_dev(input0, "class", "svelte-1vmipr5");
+    			add_location(input0, file, 94, 8, 3171);
+    			attr_dev(label, "class", "main-button svelte-1vmipr5");
+    			add_location(label, file, 93, 6, 3134);
+    			attr_dev(div3, "class", "nav-item svelte-1vmipr5");
+    			add_location(div3, file, 91, 4, 3074);
+    			attr_dev(div4, "class", "right svelte-1vmipr5");
+    			add_location(div4, file, 90, 2, 3049);
+    			attr_dev(nav, "class", "topnav svelte-1vmipr5");
+    			add_location(nav, file, 86, 0, 2947);
+    			attr_dev(h1, "class", "title svelte-1vmipr5");
+    			add_location(h1, file, 103, 4, 3384);
+    			attr_dev(h20, "class", "subtitle svelte-1vmipr5");
+    			add_location(h20, file, 104, 4, 3425);
+    			attr_dev(div5, "class", "files svelte-1vmipr5");
+    			add_location(div5, file, 106, 4, 3572);
     			attr_dev(div6, "class", "spacer");
-    			add_location(div6, file, 281, 1, 6561);
+    			add_location(div6, file, 102, 2, 3358);
     			attr_dev(div7, "class", "centered");
-    			add_location(div7, file, 280, 0, 6536);
+    			add_location(div7, file, 101, 0, 3332);
     			attr_dev(img3, "id", "thumbnail");
-    			attr_dev(img3, "class", "thumbnail svelte-tfppfv");
-    			if (!src_url_equal(img3.src, img3_src_value = /*thumbnail*/ ctx[1])) attr_dev(img3, "src", img3_src_value);
+    			attr_dev(img3, "class", "thumbnail svelte-1vmipr5");
+
+    			if (!src_url_equal(img3.src, img3_src_value = /*Player*/ ctx[3].nowPlaying
+    			? /*Player*/ ctx[3].nowPlaying.thumbnail
+    			: /*thumbnail*/ ctx[4])) attr_dev(img3, "src", img3_src_value);
+
     			attr_dev(img3, "alt", "Thumbnail");
-    			add_location(img3, file, 299, 2, 7118);
-    			attr_dev(div8, "class", "thumbnail svelte-tfppfv");
-    			add_location(div8, file, 298, 1, 7091);
+    			add_location(img3, file, 132, 4, 4476);
+    			attr_dev(div8, "class", "thumbnail svelte-1vmipr5");
+    			add_location(div8, file, 131, 2, 4447);
     			attr_dev(h21, "id", "title");
-    			attr_dev(h21, "class", "subtitle player-title svelte-tfppfv");
-    			add_location(h21, file, 302, 2, 7234);
+    			attr_dev(h21, "class", "subtitle player-title svelte-1vmipr5");
+    			add_location(h21, file, 135, 4, 4648);
     			attr_dev(img4, "id", "previous");
-    			attr_dev(img4, "class", "icon control-icon svelte-tfppfv");
+    			attr_dev(img4, "class", "icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img4.src, img4_src_value = "../static/icons/previous.svg")) attr_dev(img4, "src", img4_src_value);
     			attr_dev(img4, "alt", "Previous");
-    			add_location(img4, file, 304, 3, 7350);
+    			add_location(img4, file, 137, 6, 4769);
     			attr_dev(img5, "id", "pause");
-    			attr_dev(img5, "class", "icon control-icon svelte-tfppfv");
+    			attr_dev(img5, "class", "icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img5.src, img5_src_value = "../static/icons/play.svg")) attr_dev(img5, "src", img5_src_value);
     			attr_dev(img5, "alt", "Pause");
-    			add_location(img5, file, 305, 3, 7485);
+    			add_location(img5, file, 138, 6, 4909);
     			attr_dev(img6, "id", "stop");
-    			attr_dev(img6, "class", "icon control-icon svelte-tfppfv");
+    			attr_dev(img6, "class", "icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img6.src, img6_src_value = "../static/icons/stop.svg")) attr_dev(img6, "src", img6_src_value);
     			attr_dev(img6, "alt", "Stop");
-    			add_location(img6, file, 306, 3, 7614);
+    			add_location(img6, file, 139, 6, 5036);
     			attr_dev(img7, "id", "next");
-    			attr_dev(img7, "class", "icon control-icon svelte-tfppfv");
+    			attr_dev(img7, "class", "icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img7.src, img7_src_value = "../static/icons/next.svg")) attr_dev(img7, "src", img7_src_value);
     			attr_dev(img7, "alt", "Next");
-    			add_location(img7, file, 307, 3, 7744);
+    			add_location(img7, file, 140, 6, 5163);
     			attr_dev(img8, "id", "loop");
-    			attr_dev(img8, "class", "icon control-icon svelte-tfppfv");
+    			attr_dev(img8, "class", "icon control-icon svelte-1vmipr5");
     			if (!src_url_equal(img8.src, img8_src_value = "../static/icons/loop.svg")) attr_dev(img8, "src", img8_src_value);
     			attr_dev(img8, "alt", "Loop");
-    			add_location(img8, file, 308, 3, 7871);
-    			attr_dev(div9, "class", "player-controls svelte-tfppfv");
-    			add_location(div9, file, 303, 2, 7316);
+    			add_location(img8, file, 141, 6, 5287);
+    			attr_dev(div9, "class", "player-controls svelte-1vmipr5");
+    			add_location(div9, file, 136, 4, 4732);
     			attr_dev(div10, "id", "base-bar");
-    			attr_dev(div10, "class", "bar svelte-tfppfv");
-    			add_location(div10, file, 312, 4, 8086);
-    			attr_dev(input1, "class", "slider svelte-tfppfv");
+    			attr_dev(div10, "class", "bar svelte-1vmipr5");
+    			add_location(div10, file, 145, 8, 5507);
+    			attr_dev(input1, "class", "slider svelte-1vmipr5");
     			attr_dev(input1, "id", "slider");
     			attr_dev(input1, "type", "range");
     			input1.value = "0";
     			attr_dev(input1, "min", "0");
     			attr_dev(input1, "max", "100");
     			attr_dev(input1, "step", ".1");
-    			add_location(input1, file, 313, 4, 8129);
+    			add_location(input1, file, 146, 8, 5550);
     			attr_dev(div11, "id", "progress-bar");
-    			attr_dev(div11, "class", "overlay-bar svelte-tfppfv");
-    			add_location(div11, file, 314, 4, 8291);
-    			attr_dev(div12, "class", "progress-container svelte-tfppfv");
-    			add_location(div12, file, 311, 3, 8048);
+    			attr_dev(div11, "class", "overlay-bar svelte-1vmipr5");
+    			add_location(div11, file, 147, 8, 5718);
+    			attr_dev(div12, "class", "progress-container svelte-1vmipr5");
+    			add_location(div12, file, 144, 6, 5465);
     			attr_dev(div13, "id", "ct");
-    			attr_dev(div13, "class", "current-time svelte-tfppfv");
-    			add_location(div13, file, 317, 4, 8390);
-    			attr_dev(div14, "class", "svelte-tfppfv");
-    			add_location(div14, file, 318, 4, 8441);
+    			attr_dev(div13, "class", "current-time svelte-1vmipr5");
+    			add_location(div13, file, 150, 8, 5823);
+    			attr_dev(div14, "class", "svelte-1vmipr5");
+    			add_location(div14, file, 151, 8, 5878);
     			attr_dev(div15, "id", "sl");
-    			attr_dev(div15, "class", "song-length svelte-tfppfv");
-    			add_location(div15, file, 319, 4, 8461);
-    			attr_dev(div16, "class", "time-container svelte-tfppfv");
-    			add_location(div16, file, 316, 3, 8356);
-    			attr_dev(div17, "class", "duration-container svelte-tfppfv");
-    			add_location(div17, file, 310, 2, 8011);
-    			attr_dev(div18, "class", "player-container svelte-tfppfv");
-    			add_location(div18, file, 301, 1, 7200);
-    			attr_dev(footer, "class", "player svelte-tfppfv");
-    			add_location(footer, file, 297, 0, 7065);
+    			attr_dev(div15, "class", "song-length svelte-1vmipr5");
+    			add_location(div15, file, 152, 8, 5900);
+    			attr_dev(div16, "class", "time-container svelte-1vmipr5");
+    			add_location(div16, file, 149, 6, 5785);
+    			attr_dev(div17, "class", "duration-container svelte-1vmipr5");
+    			add_location(div17, file, 143, 4, 5425);
+    			attr_dev(div18, "class", "player-container svelte-1vmipr5");
+    			add_location(div18, file, 134, 2, 4612);
+    			attr_dev(footer, "class", "player svelte-1vmipr5");
+    			add_location(footer, file, 130, 0, 4420);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -761,11 +957,7 @@ var app = (function () {
     			append_dev(h20, t9);
     			append_dev(div6, t10);
     			append_dev(div6, div5);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div5, null);
-    			}
-
+    			if_block.m(div5, null);
     			insert_dev(target, t11, anchor);
     			insert_dev(target, footer, anchor);
     			append_dev(footer, div8);
@@ -802,49 +994,37 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(img0, "click", /*minimise*/ ctx[3], false, false, false),
-    					listen_dev(img1, "click", /*maximise*/ ctx[4], false, false, false),
-    					listen_dev(img2, "click", /*close*/ ctx[5], false, false, false),
-    					listen_dev(input0, "change", /*changeDirectory*/ ctx[2], false, false, false),
-    					listen_dev(img4, "click", /*click_handler_1*/ ctx[9], false, false, false),
-    					listen_dev(img5, "click", /*click_handler_2*/ ctx[10], false, false, false),
-    					listen_dev(img6, "click", /*click_handler_3*/ ctx[11], false, false, false),
-    					listen_dev(img7, "click", /*click_handler_4*/ ctx[12], false, false, false),
-    					listen_dev(img8, "click", /*click_handler_5*/ ctx[13], false, false, false),
-    					listen_dev(input1, "change", /*change_handler*/ ctx[14], false, false, false),
-    					listen_dev(input1, "input", /*input_handler*/ ctx[15], false, false, false)
+    					listen_dev(img0, "click", /*minimise*/ ctx[6], false, false, false),
+    					listen_dev(img1, "click", /*maximise*/ ctx[7], false, false, false),
+    					listen_dev(img2, "click", /*close*/ ctx[8], false, false, false),
+    					listen_dev(input0, "change", /*changeDirectory*/ ctx[5], false, false, false),
+    					listen_dev(img4, "click", /*click_handler_1*/ ctx[12], false, false, false),
+    					listen_dev(img5, "click", /*click_handler_2*/ ctx[13], false, false, false),
+    					listen_dev(img6, "click", /*click_handler_3*/ ctx[14], false, false, false),
+    					listen_dev(img7, "click", /*click_handler_4*/ ctx[15], false, false, false),
+    					listen_dev(img8, "click", /*click_handler_5*/ ctx[16], false, false, false),
+    					listen_dev(input1, "change", /*change_handler*/ ctx[17], false, false, false),
+    					listen_dev(input1, "input", /*input_handler*/ ctx[18], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*files*/ 1 && t9_value !== (t9_value = (/*files*/ ctx[0].length < 1
-    			? 'No suitable files have been found or no folder has been selected...'
-    			: '') + "")) set_data_dev(t9, t9_value);
+    			if (dirty & /*files*/ 4 && t9_value !== (t9_value = (/*files*/ ctx[2].length < 1
+    			? "No suitable files have been found or no folder has been selected..."
+    			: "") + "")) set_data_dev(t9, t9_value);
 
-    			if (dirty & /*files, player*/ 65) {
-    				each_value = /*files*/ ctx[0];
-    				validate_each_argument(each_value);
-    				let i;
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
 
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks[i] = create_each_block(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(div5, null);
-    					}
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(div5, null);
     				}
-
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
-    				}
-
-    				each_blocks.length = each_value.length;
     			}
     		},
     		i: noop,
@@ -855,7 +1035,7 @@ var app = (function () {
     			if (detaching) detach_dev(nav);
     			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(div7);
-    			destroy_each(each_blocks, detaching);
+    			if_block.d();
     			if (detaching) detach_dev(t11);
     			if (detaching) detach_dev(footer);
     			mounted = false;
@@ -878,32 +1058,65 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
     	let { config } = $$props;
-    	const fs = require('fs');
+    	const fs = require("fs");
+    	let directoryChanging = false;
+    	let currentFile;
     	let files = config.files || [];
-    	const { remote } = require('electron');
-    	const Player = require('../lib/Player');
-    	let thumbnail = '../static/img/placeholder.png';
+    	const { remote } = require("electron");
+    	const Player = require("../lib/Player");
+    	const { getSpotifyData } = require("../lib/Player");
+    	let thumbnail = "../static/img/placeholder.png";
 
     	function changeDirectory() {
-    		let types = ['.mp3', '.wav', '.flac'];
-    		let firstFile = [...this.files].filter(f => f.type.includes('audio'));
-    		if ([...this.files].length < 1) return alert('No files found');
+    		$$invalidate(0, directoryChanging = true);
+    		let types = [".mp3", ".wav", ".flac"];
+    		let firstFile = [...this.files].filter(f => f.type.includes("audio"));
+    		if ([...this.files].length < 1) return alert("No files found");
     		if (!firstFile[0]) return;
 
     		// Get path to the music folder
     		let filePath = firstFile[0].path;
 
-    		let lastIndex = filePath.lastIndexOf('\\');
+    		let lastIndex = filePath.lastIndexOf("\\");
     		let folderPath = filePath.slice(0, lastIndex + 1);
 
     		// Update path in config;
-    		$$invalidate(7, config.path = folderPath, config);
+    		$$invalidate(10, config.path = folderPath, config);
 
-    		fs.readdir(config.path, (error, data) => {
+    		fs.readdir(config.path, async (error, data) => {
     			if (error) return console.error(error);
-    			$$invalidate(0, files = data.filter(f => types.some(type => f.endsWith(type))));
+    			let filtered = data.filter(f => types.some(type => f.endsWith(type)));
 
-    			fs.writeFile(process.cwd() + '\\src\\config.json', JSON.stringify({ path: folderPath, files }), writeError => {
+    			const spotifyLoop = async array => {
+    				const asyncResults = [];
+
+    				for (const f of array) {
+    					$$invalidate(1, currentFile = f);
+    					let trun = f.replace(".mp3", "").replace(".wav", "").replace(".flac", "");
+    					let entry = { raw: f, filtered: trun, thumb: null };
+
+    					try {
+    						let sData = await getSpotifyData(trun);
+
+    						if (sData && sData.image) {
+    							entry.thumb = sData.image;
+    						} else {
+    							entry.thumb = null;
+    						}
+    					} catch(e) {
+    						console.log("Something went wrong when attempting to load spotify data", e);
+    					}
+
+    					asyncResults.push(entry);
+    				}
+
+    				$$invalidate(1, currentFile = undefined);
+    				return asyncResults;
+    			};
+
+    			$$invalidate(2, files = await spotifyLoop(filtered));
+
+    			fs.writeFile(process.cwd() + "\\src\\config.json", JSON.stringify({ path: folderPath, files }), writeError => {
     				if (writeError) {
     					return console.error(writeError);
     				}
@@ -930,7 +1143,7 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
-    	const click_handler = file => player.play(file);
+    	const click_handler = file => player.play(file.raw, file.thumb);
     	const click_handler_1 = () => player.previous();
     	const click_handler_2 = () => player.pause();
     	const click_handler_3 = () => player.destroy();
@@ -940,15 +1153,18 @@ var app = (function () {
     	const input_handler = e => player.seek(e);
 
     	$$self.$$set = $$props => {
-    		if ('config' in $$props) $$invalidate(7, config = $$props.config);
+    		if ('config' in $$props) $$invalidate(10, config = $$props.config);
     	};
 
     	$$self.$capture_state = () => ({
     		config,
     		fs,
+    		directoryChanging,
+    		currentFile,
     		files,
     		remote,
     		Player,
+    		getSpotifyData,
     		thumbnail,
     		changeDirectory,
     		minimise,
@@ -958,9 +1174,11 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('config' in $$props) $$invalidate(7, config = $$props.config);
-    		if ('files' in $$props) $$invalidate(0, files = $$props.files);
-    		if ('thumbnail' in $$props) $$invalidate(1, thumbnail = $$props.thumbnail);
+    		if ('config' in $$props) $$invalidate(10, config = $$props.config);
+    		if ('directoryChanging' in $$props) $$invalidate(0, directoryChanging = $$props.directoryChanging);
+    		if ('currentFile' in $$props) $$invalidate(1, currentFile = $$props.currentFile);
+    		if ('files' in $$props) $$invalidate(2, files = $$props.files);
+    		if ('thumbnail' in $$props) $$invalidate(4, thumbnail = $$props.thumbnail);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -968,7 +1186,10 @@ var app = (function () {
     	}
 
     	return [
+    		directoryChanging,
+    		currentFile,
     		files,
+    		Player,
     		thumbnail,
     		changeDirectory,
     		minimise,
@@ -990,7 +1211,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment, safe_not_equal, { config: 7 });
+    		init(this, options, instance, create_fragment, safe_not_equal, { config: 10 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -1002,7 +1223,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*config*/ ctx[7] === undefined && !('config' in props)) {
+    		if (/*config*/ ctx[10] === undefined && !('config' in props)) {
     			console_1.warn("<App> was created without expected prop 'config'");
     		}
     	}
