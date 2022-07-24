@@ -167,7 +167,8 @@
 	let thumbnail = 'http://www.scottishculture.org/themes/scottishculture/images/music_placeholder.png';
 	
 	function changeDirectory() {
-		let firstFile = [...this.files].filter(f => f.type === "audio/mp3")
+		let types = ['.mp3', '.wav', '.ogg', '.flac']
+		let firstFile = [...this.files].filter(f => f.type.includes('audio'))
 
 		if ([...this.files].length < 1) return alert('No files found');
 		if (!firstFile[0]) return;
@@ -181,7 +182,7 @@
 		config.path = folderPath;
 		fs.readdir(config.path, (error, data) => {
 			if (error) return console.error(error);
-			files = data.filter(f => f.endsWith('.mp3'));
+			files = data.filter(f => types.some(type => f.endsWith(type)));
 			fs.writeFile(process.cwd() + '\\src\\config.json', JSON.stringify({path: folderPath, files}), (writeError) => {
 				if (writeError) {
 					return console.error(writeError)
