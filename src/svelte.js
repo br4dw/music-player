@@ -1,5 +1,5 @@
 import App from './App.svelte';
-const fs = require('fs');
+const fs = window.require('fs');
 
 const configPath = './src/config.json';
 const defaultConfig = {
@@ -28,7 +28,7 @@ fs.access(configPath, fs.F_OK, (accessError) => {
 
 const app = new App({
 	target: document.body,
-	props: { config: require(process.cwd() + '\\src\\config.json') }
+	props: { config: window.require(process.cwd() + '\\src\\config.json') }
 });
 
 export default app;

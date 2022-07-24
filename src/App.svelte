@@ -4,7 +4,7 @@
 	<title>Music Player</title>
 </svelte:head>
 
-<style>
+<style scoped>
 	:root {
 		--player-height: 120px;
 	}
