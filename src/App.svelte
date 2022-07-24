@@ -105,10 +105,19 @@
 	.control-icon {
 		filter: invert(90%) sepia(7%) saturate(169%) hue-rotate(196deg) brightness(106%) contrast(91%) !important;
 	}
+	.title-icon {
+		width: 35px;
+		height: 35px;
+		padding: 8px;
+		transition: all 0.2s ease-in-out;
+		-webkit-app-region: no-drag;
+	}
+	.title-icon:hover {
+		background-color: #dedee4;
+	}
 	.control-icon:hover {
 		filter: invert(93%) sepia(17%) saturate(121%) hue-rotate(201deg) brightness(95%) contrast(95%) !important;
 	}
-
 	.player-container {
 		display: flex;
 		flex-direction: column;
@@ -182,20 +191,34 @@
 		cursor: pointer;
 		opacity: 1;
 	}
+	.title-container {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		background-color: #131316;
+		-webkit-app-region: drag;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-o-user-select: none;
+		user-select: none;
+	}
 </style>
 
 <script>
 	export let config;
 	const fs = require('fs');
-	let files = config.files ||  [];
+	let files = config.files || [];
+	const { remote } = require('electron');
 
 	const Player = require('../lib/Player');
 	
-	let thumbnail = 'http://www.scottishculture.org/themes/scottishculture/images/music_placeholder.png';
+	let thumbnail = '../static/img/placeholder.png';
 	
 	function changeDirectory() {
-		let types = ['.mp3', '.wav', '.flac']
-		let firstFile = [...this.files].filter(f => f.type.includes('audio'))
+		let types = ['.mp3', '.wav', '.flac'];
+		let firstFile = [...this.files].filter(f => f.type.includes('audio'));
 
 		if ([...this.files].length < 1) return alert('No files found');
 		if (!firstFile[0]) return;
@@ -218,9 +241,26 @@
 		})
 	}
 
+	function minimise() { 
+		remote.BrowserWindow.getFocusedWindow().minimize();
+	}
+	function maximise() {
+		remote.BrowserWindow.getFocusedWindow().setFullScreen(!remote.BrowserWindow.getFocusedWindow().isFullScreen());
+	}
+	function close() {
+		remote.BrowserWindow.getFocusedWindow().close();
+	}
+
 	const player = new Player(config, files);
 
 </script>
+
+<!-- Title Bar -->
+<div class="title-container">
+	<img class="icon title-icon control-icon" src="../static/icons/minimise.svg" alt="-" on:click={minimise}>
+	<img class="icon title-icon control-icon" src="../static/icons/maximise.svg" alt="[]" on:click={maximise}>
+	<img class="icon title-icon control-icon" src="../static/icons/close.svg" alt="x" on:click={close}>
+</div>
 
 <!-- Top navbar -->
 <nav class="topnav">
@@ -266,6 +306,7 @@
 			<img id="pause"    class="icon control-icon" src="../static/icons/play.svg"     alt="Pause" on:click={() => player.pause()}>
 			<img id="stop"     class="icon control-icon" src="../static/icons/stop.svg"     alt="Stop" on:click={() => player.destroy()}>
 			<img id="next"     class="icon control-icon" src="../static/icons/next.svg"     alt="Next" on:click={() => player.skip()}>
+			<img id="loop"     class="icon control-icon" src="../static/icons/loop.svg"     alt="Loop" on:click={() => player.loopSong()}>
 		</div>
 		<div class="duration-container">
 			<div class="progress-container">
