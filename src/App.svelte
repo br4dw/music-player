@@ -141,7 +141,7 @@
 	}
 	.bar {
 		position: relative;
-		background: rgb(255, 255, 255, 0.05);
+		background: #1f1f21;
 		height: 6px;
 		width: 25vw;
 		border-radius: 4px;
@@ -149,12 +149,38 @@
 	.overlay-bar {
 		position: absolute;
 		top: 0;
-		background: rgb(255, 255, 255, 0.15);
+		background: rgb(118, 118, 118);
 		height: 6px;
 		max-width: 100%;
 		width: 0%;
 		border-radius: 4px;
-		transition: width 0.2s ease-in-out;
+		/* transition: width 0.2s ease-in-out; */
+	}
+	.slider {
+		position: absolute;
+		top: 0;
+		-webkit-appearance: none;
+		width: 100%;
+		height: 6px;
+		border-radius: 5px;  
+		background: transparent;
+		border: none;
+		outline: none;
+		-webkit-transition: .2s;
+		transition: opacity .2s;
+		padding: 0;
+		opacity: 1;
+		z-index: 69;
+	}
+	.slider::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%; 
+		background: rgb(118, 118, 118);
+		cursor: pointer;
+		opacity: 1;
 	}
 </style>
 
@@ -243,7 +269,8 @@
 		</div>
 		<div class="duration-container">
 			<div class="progress-container">
-				<div class="bar"></div>
+				<div id="base-bar" class="bar"></div>
+				<input on:change={(e) => player.stopSeek(e)} on:input={(e) => player.seek(e)} class="slider" id="slider" type="range" value="0" min="0" max="100" step=".1">
 				<div id="progress-bar" class="overlay-bar"></div>
 			</div>
 			<div class="time-container">
