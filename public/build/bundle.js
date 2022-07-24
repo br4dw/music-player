@@ -392,7 +392,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (229:3) {#each files as file}
+    // (219:3) {#each files as file}
     function create_each_block(ctx) {
     	let div;
     	let p;
@@ -418,15 +418,15 @@ var app = (function () {
     			t1 = space();
     			img = element("img");
     			t2 = space();
-    			attr_dev(p, "class", "file-name svelte-167qhvw");
-    			add_location(p, file, 230, 5, 5513);
+    			attr_dev(p, "class", "file-name svelte-suwl3u");
+    			add_location(p, file, 220, 5, 5098);
     			attr_dev(img, "id", img_id_value = /*file*/ ctx[12]);
-    			attr_dev(img, "class", "icon svelte-167qhvw");
+    			attr_dev(img, "class", "icon svelte-suwl3u");
     			if (!src_url_equal(img.src, img_src_value = "../static/icons/play.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Play");
-    			add_location(img, file, 231, 5, 5551);
-    			attr_dev(div, "class", "file svelte-167qhvw");
-    			add_location(div, file, 229, 4, 5488);
+    			add_location(img, file, 221, 5, 5136);
+    			attr_dev(div, "class", "file svelte-suwl3u");
+    			add_location(div, file, 219, 4, 5073);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -460,7 +460,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(229:3) {#each files as file}",
+    		source: "(219:3) {#each files as file}",
     		ctx
     	});
 
@@ -497,6 +497,7 @@ var app = (function () {
     	let img0;
     	let img0_src_value;
     	let t9;
+    	let div17;
     	let h21;
     	let t11;
     	let div8;
@@ -512,20 +513,18 @@ var app = (function () {
     	let img4;
     	let img4_src_value;
     	let t15;
-    	let br0;
-    	let br1;
-    	let br2;
-    	let t16;
+    	let div16;
     	let div11;
     	let div9;
-    	let t17;
+    	let t16;
     	let div10;
-    	let t18;
-    	let p0;
-    	let t20;
-    	let p1;
-    	let t22;
-    	let p2;
+    	let t17;
+    	let div15;
+    	let div12;
+    	let t19;
+    	let div13;
+    	let t21;
+    	let div14;
     	let mounted;
     	let dispose;
     	let each_value = /*files*/ ctx[0];
@@ -568,6 +567,7 @@ var app = (function () {
     			div7 = element("div");
     			img0 = element("img");
     			t9 = space();
+    			div17 = element("div");
     			h21 = element("h2");
     			h21.textContent = "Nothing is currently playing";
     			t11 = space();
@@ -580,101 +580,103 @@ var app = (function () {
     			t14 = space();
     			img4 = element("img");
     			t15 = space();
-    			br0 = element("br");
-    			br1 = element("br");
-    			br2 = element("br");
-    			t16 = space();
+    			div16 = element("div");
     			div11 = element("div");
     			div9 = element("div");
-    			t17 = space();
+    			t16 = space();
     			div10 = element("div");
-    			t18 = space();
-    			p0 = element("p");
-    			p0.textContent = "00:00";
-    			t20 = space();
-    			p1 = element("p");
-    			p1.textContent = "/";
-    			t22 = space();
-    			p2 = element("p");
-    			p2.textContent = "00:00";
-    			attr_dev(div0, "class", "nav-item svelte-167qhvw");
-    			add_location(div0, file, 206, 2, 4629);
-    			attr_dev(div1, "class", "left svelte-167qhvw");
-    			add_location(div1, file, 205, 1, 4607);
+    			t17 = space();
+    			div15 = element("div");
+    			div12 = element("div");
+    			div12.textContent = "00:00";
+    			t19 = space();
+    			div13 = element("div");
+    			div13.textContent = "/";
+    			t21 = space();
+    			div14 = element("div");
+    			div14.textContent = "00:00";
+    			attr_dev(div0, "class", "nav-item svelte-suwl3u");
+    			add_location(div0, file, 199, 2, 4479);
+    			attr_dev(div1, "class", "left svelte-suwl3u");
+    			add_location(div1, file, 198, 1, 4457);
     			attr_dev(input, "type", "file");
     			attr_dev(input, "webkitdirectory", "true");
     			attr_dev(input, "directory", "");
-    			attr_dev(input, "class", "svelte-167qhvw");
-    			add_location(input, file, 211, 4, 4764);
-    			attr_dev(label, "class", "main-button svelte-167qhvw");
-    			add_location(label, file, 210, 3, 4731);
-    			attr_dev(div2, "class", "nav-item svelte-167qhvw");
-    			add_location(div2, file, 209, 2, 4704);
-    			attr_dev(div3, "class", "right svelte-167qhvw");
-    			add_location(div3, file, 208, 1, 4681);
-    			attr_dev(nav, "class", "topnav svelte-167qhvw");
-    			add_location(nav, file, 204, 0, 4584);
-    			attr_dev(h1, "class", "title svelte-167qhvw");
-    			add_location(h1, file, 225, 2, 5273);
-    			attr_dev(h20, "class", "subtitle svelte-167qhvw");
-    			add_location(h20, file, 226, 2, 5312);
-    			attr_dev(div4, "class", "files svelte-167qhvw");
-    			add_location(div4, file, 227, 2, 5437);
+    			attr_dev(input, "class", "svelte-suwl3u");
+    			add_location(input, file, 205, 4, 4641);
+    			attr_dev(label, "class", "main-button svelte-suwl3u");
+    			add_location(label, file, 204, 3, 4608);
+    			attr_dev(div2, "class", "nav-item svelte-suwl3u");
+    			add_location(div2, file, 202, 2, 4554);
+    			attr_dev(div3, "class", "right svelte-suwl3u");
+    			add_location(div3, file, 201, 1, 4531);
+    			attr_dev(nav, "class", "topnav svelte-suwl3u");
+    			add_location(nav, file, 197, 0, 4434);
+    			attr_dev(h1, "class", "title svelte-suwl3u");
+    			add_location(h1, file, 214, 2, 4840);
+    			attr_dev(h20, "class", "subtitle svelte-suwl3u");
+    			add_location(h20, file, 215, 2, 4879);
+    			attr_dev(div4, "class", "files svelte-suwl3u");
+    			add_location(div4, file, 217, 2, 5022);
     			attr_dev(div5, "class", "spacer");
-    			add_location(div5, file, 224, 1, 5249);
+    			add_location(div5, file, 213, 1, 4816);
     			attr_dev(div6, "class", "centered");
-    			add_location(div6, file, 219, 0, 5041);
+    			add_location(div6, file, 212, 0, 4791);
     			attr_dev(img0, "id", "thumbnail");
-    			attr_dev(img0, "class", "thumbnail svelte-167qhvw");
+    			attr_dev(img0, "class", "thumbnail svelte-suwl3u");
     			if (!src_url_equal(img0.src, img0_src_value = /*thumbnail*/ ctx[1])) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Thumbnail");
-    			add_location(img0, file, 242, 2, 5889);
-    			attr_dev(div7, "class", "thumbnail svelte-167qhvw");
-    			add_location(div7, file, 241, 1, 5862);
+    			add_location(img0, file, 231, 2, 5373);
+    			attr_dev(div7, "class", "thumbnail svelte-suwl3u");
+    			add_location(div7, file, 230, 1, 5346);
     			attr_dev(h21, "id", "title");
-    			attr_dev(h21, "class", "subtitle player-title svelte-167qhvw");
-    			add_location(h21, file, 244, 1, 5971);
+    			attr_dev(h21, "class", "subtitle player-title svelte-suwl3u");
+    			add_location(h21, file, 234, 2, 5489);
     			attr_dev(img1, "id", "previous");
-    			attr_dev(img1, "class", "icon control-icon svelte-167qhvw");
+    			attr_dev(img1, "class", "icon control-icon svelte-suwl3u");
     			if (!src_url_equal(img1.src, img1_src_value = "../static/icons/previous.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Previous");
-    			add_location(img1, file, 246, 2, 6085);
+    			add_location(img1, file, 236, 3, 5605);
     			attr_dev(img2, "id", "pause");
-    			attr_dev(img2, "class", "icon control-icon svelte-167qhvw");
+    			attr_dev(img2, "class", "icon control-icon svelte-suwl3u");
     			if (!src_url_equal(img2.src, img2_src_value = "../static/icons/play.svg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "Pause");
-    			add_location(img2, file, 247, 2, 6219);
+    			add_location(img2, file, 237, 3, 5740);
     			attr_dev(img3, "id", "stop");
-    			attr_dev(img3, "class", "icon control-icon svelte-167qhvw");
+    			attr_dev(img3, "class", "icon control-icon svelte-suwl3u");
     			if (!src_url_equal(img3.src, img3_src_value = "../static/icons/stop.svg")) attr_dev(img3, "src", img3_src_value);
     			attr_dev(img3, "alt", "Stop");
-    			add_location(img3, file, 248, 2, 6347);
+    			add_location(img3, file, 238, 3, 5869);
     			attr_dev(img4, "id", "next");
-    			attr_dev(img4, "class", "icon control-icon svelte-167qhvw");
+    			attr_dev(img4, "class", "icon control-icon svelte-suwl3u");
     			if (!src_url_equal(img4.src, img4_src_value = "../static/icons/next.svg")) attr_dev(img4, "src", img4_src_value);
     			attr_dev(img4, "alt", "Next");
-    			add_location(img4, file, 249, 2, 6476);
-    			attr_dev(div8, "class", "player-controls svelte-167qhvw");
-    			add_location(div8, file, 245, 1, 6052);
-    			add_location(br0, file, 250, 8, 6608);
-    			add_location(br1, file, 250, 14, 6614);
-    			add_location(br2, file, 250, 20, 6620);
-    			attr_dev(div9, "class", "bar svelte-167qhvw");
-    			add_location(div9, file, 252, 2, 6659);
+    			add_location(img4, file, 239, 3, 5999);
+    			attr_dev(div8, "class", "player-controls svelte-suwl3u");
+    			add_location(div8, file, 235, 2, 5571);
+    			attr_dev(div9, "class", "bar svelte-suwl3u");
+    			add_location(div9, file, 243, 4, 6210);
     			attr_dev(div10, "id", "progress-bar");
-    			attr_dev(div10, "class", "bar-overlay svelte-167qhvw");
-    			add_location(div10, file, 253, 2, 6686);
-    			attr_dev(p0, "id", "ct");
-    			attr_dev(p0, "class", "current-time");
-    			add_location(p0, file, 254, 2, 6739);
-    			add_location(p1, file, 255, 2, 6784);
-    			attr_dev(p2, "id", "sl");
-    			attr_dev(p2, "class", "song-length");
-    			add_location(p2, file, 256, 2, 6798);
-    			attr_dev(div11, "class", "position-bar svelte-167qhvw");
-    			add_location(div11, file, 251, 1, 6629);
-    			attr_dev(footer, "class", "player svelte-167qhvw");
-    			add_location(footer, file, 240, 0, 5836);
+    			attr_dev(div10, "class", "overlay-bar svelte-suwl3u");
+    			add_location(div10, file, 244, 4, 6239);
+    			attr_dev(div11, "class", "progress-container svelte-suwl3u");
+    			add_location(div11, file, 242, 3, 6172);
+    			attr_dev(div12, "id", "ct");
+    			attr_dev(div12, "class", "current-time svelte-suwl3u");
+    			add_location(div12, file, 247, 4, 6338);
+    			attr_dev(div13, "class", "svelte-suwl3u");
+    			add_location(div13, file, 248, 4, 6389);
+    			attr_dev(div14, "id", "sl");
+    			attr_dev(div14, "class", "song-length svelte-suwl3u");
+    			add_location(div14, file, 249, 4, 6409);
+    			attr_dev(div15, "class", "time-container svelte-suwl3u");
+    			add_location(div15, file, 246, 3, 6304);
+    			attr_dev(div16, "class", "duration-container svelte-suwl3u");
+    			add_location(div16, file, 241, 2, 6135);
+    			attr_dev(div17, "class", "player-container svelte-suwl3u");
+    			add_location(div17, file, 233, 1, 5455);
+    			attr_dev(footer, "class", "player svelte-suwl3u");
+    			add_location(footer, file, 229, 0, 5320);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -708,9 +710,10 @@ var app = (function () {
     			append_dev(footer, div7);
     			append_dev(div7, img0);
     			append_dev(footer, t9);
-    			append_dev(footer, h21);
-    			append_dev(footer, t11);
-    			append_dev(footer, div8);
+    			append_dev(footer, div17);
+    			append_dev(div17, h21);
+    			append_dev(div17, t11);
+    			append_dev(div17, div8);
     			append_dev(div8, img1);
     			append_dev(div8, t12);
     			append_dev(div8, img2);
@@ -718,21 +721,19 @@ var app = (function () {
     			append_dev(div8, img3);
     			append_dev(div8, t14);
     			append_dev(div8, img4);
-    			append_dev(footer, t15);
-    			append_dev(footer, br0);
-    			append_dev(footer, br1);
-    			append_dev(footer, br2);
-    			append_dev(footer, t16);
-    			append_dev(footer, div11);
+    			append_dev(div17, t15);
+    			append_dev(div17, div16);
+    			append_dev(div16, div11);
     			append_dev(div11, div9);
-    			append_dev(div11, t17);
+    			append_dev(div11, t16);
     			append_dev(div11, div10);
-    			append_dev(div11, t18);
-    			append_dev(div11, p0);
-    			append_dev(div11, t20);
-    			append_dev(div11, p1);
-    			append_dev(div11, t22);
-    			append_dev(div11, p2);
+    			append_dev(div16, t17);
+    			append_dev(div16, div15);
+    			append_dev(div15, div12);
+    			append_dev(div15, t19);
+    			append_dev(div15, div13);
+    			append_dev(div15, t21);
+    			append_dev(div15, div14);
 
     			if (!mounted) {
     				dispose = [
@@ -805,17 +806,8 @@ var app = (function () {
     	validate_slots('App', slots, []);
     	let { config } = $$props;
     	const fs = require('fs');
-
-    	// import { onMount } from 'svelte';
     	let files = config.files || [];
-
-    	// onMount(() => {
-    	// 	setInterval(() => {
-    	// 		console.log(player.getCurrentTime())
-    	// 	}, 1000)
-    	// })
     	const Player = require('../lib/Player');
-
     	let thumbnail = 'http://www.scottishculture.org/themes/scottishculture/images/music_placeholder.png';
 
     	function changeDirectory() {

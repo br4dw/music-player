@@ -86,19 +86,17 @@
 	}
 	.thumbnail {
 		float: left;
-		/* background-color: rgb(167, 166, 180); */
-		/* padding: 2px; */
 	}
 	.thumbnail img {
 		height: 100px;
 		width: 100px;
-		/* margin: 5px; */
 	}
 	.player-title {
 		float: none;
 		color: rgb(167, 166, 180);
+		margin: 0;
 		margin-left: 10px;
-		margin-bottom: 0;
+		margin-top: 8px;
 	}
 	.player-controls img {
 		width: 45px;
@@ -110,62 +108,59 @@
 	.control-icon:hover {
 		filter: invert(93%) sepia(17%) saturate(121%) hue-rotate(201deg) brightness(95%) contrast(95%) !important;
 	}
-	.position-bar {
+
+	.player-container {
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		align-items: left;
+	}
+	.duration-container {
 		display: flex;
 		flex-direction: row;
+		align-content: center;
 		align-items: center;
-		float: left;
-		position: absolute;
-		left: 0;
-		bottom: -15px;
-		margin-left: 110px;
+		justify-content: space-between;
+		margin-left: 10px;
+	}
+	.progress-container {
+		position: relative;
+		right: 0;
+		margin-right: 10px;
+	}
+	.time-container {
+		display: flex;
+		flex-direction: row;
+		align-content: center;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.time-container div {
+		color: rgb(167, 166, 180);
 	}
 	.bar {
 		position: relative;
 		background: rgb(255, 255, 255, 0.05);
-		height: 5px;
+		height: 6px;
 		width: 25vw;
 		border-radius: 4px;
-		margin-right: 10px;
 	}
-	.bar-overlay {
+	.overlay-bar {
 		position: absolute;
+		top: 0;
 		background: rgb(255, 255, 255, 0.15);
-		height: 5px;
+		height: 6px;
+		max-width: 100%;
 		width: 0%;
 		border-radius: 4px;
-		margin-right: 10px;
 		transition: width 0.2s ease-in-out;
 	}
-	/* .bar {
-		width: 25vw;
-		height: 5px;
-		background-color: #2c2c31;
-		border-radius: 6px;
-		z-index: 5;
-		margin: 10px;
-	} */
-	/* .bar::after {
-		content: "";
-		height: 5px !important;
-		width: 50% !important;
-		background-color: red;
-		border-radius: 6px;
-		z-index: 10;
-	} */
 </style>
 
 <script>
 	export let config;
 	const fs = require('fs');
-	// import { onMount } from 'svelte';
 	let files = config.files ||  [];
-
-	// onMount(() => {
-	// 	setInterval(() => {
-	// 		console.log(player.getCurrentTime())
-	// 	}, 1000)
-	// })
 
 	const Player = require('../lib/Player');
 	
@@ -199,8 +194,6 @@
 
 </script>
 
-<!-- <main> -->
-
 <!-- Top navbar -->
 <nav class="topnav">
 	<div class="left">
@@ -208,23 +201,20 @@
 	</div>
 	<div class="right">
 		<div class="nav-item">
+			<!-- Folder import -->
 			<label class="main-button">
 				<input type="file" webkitdirectory="true" directory on:change={changeDirectory}/>
 				Select music folder
 			</label>
-			<!-- <input class="main-button" id="design" type="file" webkitdirectory="true" directory on:change={changeDirectory}/> -->
 		</div>
 	</div>
 </nav>
 
 <div class="centered">
-	<!-- Folder import -->
-	<!-- <div class="spacer">
-		<input class="main-button" id="design" type="file" webkitdirectory="true" directory on:change={changeDirectory}/>
-	</div> -->
 	<div class="spacer">
 		<h1 class="title">Music folder</h1>
 		<h2 class="subtitle">{files.length < 1 ? 'No suitable files have been found or no folder has been selected...' : ''}</h2>
+		<!-- Files -->
 		<div class="files">
 			{#each files as file}
 				<div class="file">
@@ -237,25 +227,28 @@
 </div>
 
 <!-- Bottom player -->
-<!-- <footer class="player" style="{nowPlaying.playing ? 'display: flex;' : 'display: none;'}"> -->
 <footer class="player">
 	<div class="thumbnail">
 		<img id="thumbnail" class="thumbnail" src={thumbnail} alt="Thumbnail">
 	</div>
-	<h2 id="title" class="subtitle player-title">Nothing is currently playing</h2>
-	<div class="player-controls">
-		<img id="previous" class="icon control-icon" src="../static/icons/previous.svg" alt="Previous" on:click={() => player.previous()}>
-		<img id="pause"    class="icon control-icon" src="../static/icons/play.svg"     alt="Pause" on:click={() => player.pause()}>
-		<img id="stop"     class="icon control-icon" src="../static/icons/stop.svg"     alt="Stop" on:click={() => player.destroy()}>
-		<img id="next"     class="icon control-icon" src="../static/icons/next.svg"     alt="Next" on:click={() => player.skip()}>
-	</div> <br /><br /><br />
-	<div class="position-bar">
-		<div class="bar"></div>
-		<div id="progress-bar" class="bar-overlay"></div>
-		<p id="ct" class="current-time">00:00</p>
-		<p> / </p>
-		<p id="sl" class="song-length">00:00</p>
+	<div class="player-container">
+		<h2 id="title" class="subtitle player-title">Nothing is currently playing</h2>
+		<div class="player-controls">
+			<img id="previous" class="icon control-icon" src="../static/icons/previous.svg" alt="Previous" on:click={() => player.previous()}>
+			<img id="pause"    class="icon control-icon" src="../static/icons/play.svg"     alt="Pause" on:click={() => player.pause()}>
+			<img id="stop"     class="icon control-icon" src="../static/icons/stop.svg"     alt="Stop" on:click={() => player.destroy()}>
+			<img id="next"     class="icon control-icon" src="../static/icons/next.svg"     alt="Next" on:click={() => player.skip()}>
+		</div>
+		<div class="duration-container">
+			<div class="progress-container">
+				<div class="bar"></div>
+				<div id="progress-bar" class="overlay-bar"></div>
+			</div>
+			<div class="time-container">
+				<div id="ct" class="current-time">00:00</div>
+				<div> / </div>
+				<div id="sl" class="song-length">00:00</div>
+			</div>
+		</div>
 	</div>
 </footer>
-
-<!-- </main> -->
