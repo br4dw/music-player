@@ -47,7 +47,6 @@
   "dependencies": {
     "electron-reload": "^1.5.0",
     "electron-squirrel-startup": "^1.0.0",
-    "fs": "0.0.1-security",
     "get-mp3-duration": "^1.0.0",
     "rollup-plugin-css-only": "^3.1.0",
     "sirv-cli": "^0.4.4"
