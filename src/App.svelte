@@ -1,9 +1,3 @@
-<link rel="stylesheet" href="../static/css/styles.css">
-
-<svelte:head>
-	<title>Music Player</title>
-</svelte:head>
-
 <style scoped>
 	:root {
 		--player-height: 120px;
@@ -181,6 +175,7 @@
 		let firstFile = [...this.files].filter(f => f.type === "audio/mp3")
 
 		if ([...this.files].length < 1) return alert('No files found');
+		if (!firstFile[0]) return;
 
 		// Get path to the music folder
 		let filePath = firstFile[0].path;

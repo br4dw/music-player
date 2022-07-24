@@ -1,5 +1,5 @@
 
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.head.appendChild(r) })(window.document);
 var app = (function () {
     'use strict';
 
@@ -392,7 +392,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (234:3) {#each files as file}
+    // (229:3) {#each files as file}
     function create_each_block(ctx) {
     	let div;
     	let p;
@@ -419,14 +419,14 @@ var app = (function () {
     			img = element("img");
     			t2 = space();
     			attr_dev(p, "class", "file-name svelte-167qhvw");
-    			add_location(p, file, 235, 5, 5605);
+    			add_location(p, file, 230, 5, 5513);
     			attr_dev(img, "id", img_id_value = /*file*/ ctx[12]);
     			attr_dev(img, "class", "icon svelte-167qhvw");
     			if (!src_url_equal(img.src, img_src_value = "../static/icons/play.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Play");
-    			add_location(img, file, 236, 5, 5643);
+    			add_location(img, file, 231, 5, 5551);
     			attr_dev(div, "class", "file svelte-167qhvw");
-    			add_location(div, file, 234, 4, 5580);
+    			add_location(div, file, 229, 4, 5488);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -460,7 +460,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(234:3) {#each files as file}",
+    		source: "(229:3) {#each files as file}",
     		ctx
     	});
 
@@ -468,66 +468,63 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let link;
-    	let t0;
-    	let t1;
     	let nav;
     	let div1;
     	let div0;
-    	let t3;
+    	let t1;
     	let div3;
     	let div2;
     	let label;
     	let input;
-    	let t4;
-    	let t5;
+    	let t2;
+    	let t3;
     	let div6;
     	let div5;
     	let h1;
-    	let t7;
+    	let t5;
     	let h20;
 
-    	let t8_value = (/*files*/ ctx[0].length < 1
+    	let t6_value = (/*files*/ ctx[0].length < 1
     	? 'No suitable files have been found or no folder has been selected...'
     	: '') + "";
 
-    	let t8;
-    	let t9;
+    	let t6;
+    	let t7;
     	let div4;
-    	let t10;
+    	let t8;
     	let footer;
     	let div7;
     	let img0;
     	let img0_src_value;
-    	let t11;
+    	let t9;
     	let h21;
-    	let t13;
+    	let t11;
     	let div8;
     	let img1;
     	let img1_src_value;
-    	let t14;
+    	let t12;
     	let img2;
     	let img2_src_value;
-    	let t15;
+    	let t13;
     	let img3;
     	let img3_src_value;
-    	let t16;
+    	let t14;
     	let img4;
     	let img4_src_value;
-    	let t17;
+    	let t15;
     	let br0;
     	let br1;
     	let br2;
-    	let t18;
+    	let t16;
     	let div11;
     	let div9;
-    	let t19;
+    	let t17;
     	let div10;
-    	let t20;
+    	let t18;
     	let p0;
-    	let t22;
+    	let t20;
     	let p1;
-    	let t24;
+    	let t22;
     	let p2;
     	let mounted;
     	let dispose;
@@ -541,210 +538,200 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			link = element("link");
-    			t0 = space();
-    			t1 = space();
     			nav = element("nav");
     			div1 = element("div");
     			div0 = element("div");
     			div0.textContent = "Music Player";
-    			t3 = space();
+    			t1 = space();
     			div3 = element("div");
     			div2 = element("div");
     			label = element("label");
     			input = element("input");
-    			t4 = text("\r\n\t\t\t\tSelect music folder");
-    			t5 = space();
+    			t2 = text("\r\n\t\t\t\tSelect music folder");
+    			t3 = space();
     			div6 = element("div");
     			div5 = element("div");
     			h1 = element("h1");
     			h1.textContent = "Music folder";
-    			t7 = space();
+    			t5 = space();
     			h20 = element("h2");
-    			t8 = text(t8_value);
-    			t9 = space();
+    			t6 = text(t6_value);
+    			t7 = space();
     			div4 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t10 = space();
+    			t8 = space();
     			footer = element("footer");
     			div7 = element("div");
     			img0 = element("img");
-    			t11 = space();
+    			t9 = space();
     			h21 = element("h2");
     			h21.textContent = "Nothing is currently playing";
-    			t13 = space();
+    			t11 = space();
     			div8 = element("div");
     			img1 = element("img");
-    			t14 = space();
+    			t12 = space();
     			img2 = element("img");
-    			t15 = space();
+    			t13 = space();
     			img3 = element("img");
-    			t16 = space();
+    			t14 = space();
     			img4 = element("img");
-    			t17 = space();
+    			t15 = space();
     			br0 = element("br");
     			br1 = element("br");
     			br2 = element("br");
-    			t18 = space();
+    			t16 = space();
     			div11 = element("div");
     			div9 = element("div");
-    			t19 = space();
+    			t17 = space();
     			div10 = element("div");
-    			t20 = space();
+    			t18 = space();
     			p0 = element("p");
     			p0.textContent = "00:00";
-    			t22 = space();
+    			t20 = space();
     			p1 = element("p");
     			p1.textContent = "/";
-    			t24 = space();
+    			t22 = space();
     			p2 = element("p");
     			p2.textContent = "00:00";
-    			attr_dev(link, "rel", "stylesheet");
-    			attr_dev(link, "href", "../static/css/styles.css");
-    			add_location(link, file, 0, 0, 0);
-    			document.title = "Music Player";
     			attr_dev(div0, "class", "nav-item svelte-167qhvw");
-    			add_location(div0, file, 211, 2, 4721);
+    			add_location(div0, file, 206, 2, 4629);
     			attr_dev(div1, "class", "left svelte-167qhvw");
-    			add_location(div1, file, 210, 1, 4699);
+    			add_location(div1, file, 205, 1, 4607);
     			attr_dev(input, "type", "file");
     			attr_dev(input, "webkitdirectory", "true");
     			attr_dev(input, "directory", "");
     			attr_dev(input, "class", "svelte-167qhvw");
-    			add_location(input, file, 216, 4, 4856);
+    			add_location(input, file, 211, 4, 4764);
     			attr_dev(label, "class", "main-button svelte-167qhvw");
-    			add_location(label, file, 215, 3, 4823);
+    			add_location(label, file, 210, 3, 4731);
     			attr_dev(div2, "class", "nav-item svelte-167qhvw");
-    			add_location(div2, file, 214, 2, 4796);
+    			add_location(div2, file, 209, 2, 4704);
     			attr_dev(div3, "class", "right svelte-167qhvw");
-    			add_location(div3, file, 213, 1, 4773);
+    			add_location(div3, file, 208, 1, 4681);
     			attr_dev(nav, "class", "topnav svelte-167qhvw");
-    			add_location(nav, file, 209, 0, 4676);
+    			add_location(nav, file, 204, 0, 4584);
     			attr_dev(h1, "class", "title svelte-167qhvw");
-    			add_location(h1, file, 230, 2, 5365);
+    			add_location(h1, file, 225, 2, 5273);
     			attr_dev(h20, "class", "subtitle svelte-167qhvw");
-    			add_location(h20, file, 231, 2, 5404);
+    			add_location(h20, file, 226, 2, 5312);
     			attr_dev(div4, "class", "files svelte-167qhvw");
-    			add_location(div4, file, 232, 2, 5529);
+    			add_location(div4, file, 227, 2, 5437);
     			attr_dev(div5, "class", "spacer");
-    			add_location(div5, file, 229, 1, 5341);
+    			add_location(div5, file, 224, 1, 5249);
     			attr_dev(div6, "class", "centered");
-    			add_location(div6, file, 224, 0, 5133);
+    			add_location(div6, file, 219, 0, 5041);
     			attr_dev(img0, "id", "thumbnail");
     			attr_dev(img0, "class", "thumbnail svelte-167qhvw");
     			if (!src_url_equal(img0.src, img0_src_value = /*thumbnail*/ ctx[1])) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Thumbnail");
-    			add_location(img0, file, 247, 2, 5981);
+    			add_location(img0, file, 242, 2, 5889);
     			attr_dev(div7, "class", "thumbnail svelte-167qhvw");
-    			add_location(div7, file, 246, 1, 5954);
+    			add_location(div7, file, 241, 1, 5862);
     			attr_dev(h21, "id", "title");
     			attr_dev(h21, "class", "subtitle player-title svelte-167qhvw");
-    			add_location(h21, file, 249, 1, 6063);
+    			add_location(h21, file, 244, 1, 5971);
     			attr_dev(img1, "id", "previous");
     			attr_dev(img1, "class", "icon control-icon svelte-167qhvw");
     			if (!src_url_equal(img1.src, img1_src_value = "../static/icons/previous.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Previous");
-    			add_location(img1, file, 251, 2, 6177);
+    			add_location(img1, file, 246, 2, 6085);
     			attr_dev(img2, "id", "pause");
     			attr_dev(img2, "class", "icon control-icon svelte-167qhvw");
     			if (!src_url_equal(img2.src, img2_src_value = "../static/icons/play.svg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "Pause");
-    			add_location(img2, file, 252, 2, 6311);
+    			add_location(img2, file, 247, 2, 6219);
     			attr_dev(img3, "id", "stop");
     			attr_dev(img3, "class", "icon control-icon svelte-167qhvw");
     			if (!src_url_equal(img3.src, img3_src_value = "../static/icons/stop.svg")) attr_dev(img3, "src", img3_src_value);
     			attr_dev(img3, "alt", "Stop");
-    			add_location(img3, file, 253, 2, 6439);
+    			add_location(img3, file, 248, 2, 6347);
     			attr_dev(img4, "id", "next");
     			attr_dev(img4, "class", "icon control-icon svelte-167qhvw");
     			if (!src_url_equal(img4.src, img4_src_value = "../static/icons/next.svg")) attr_dev(img4, "src", img4_src_value);
     			attr_dev(img4, "alt", "Next");
-    			add_location(img4, file, 254, 2, 6568);
+    			add_location(img4, file, 249, 2, 6476);
     			attr_dev(div8, "class", "player-controls svelte-167qhvw");
-    			add_location(div8, file, 250, 1, 6144);
-    			add_location(br0, file, 255, 8, 6700);
-    			add_location(br1, file, 255, 14, 6706);
-    			add_location(br2, file, 255, 20, 6712);
+    			add_location(div8, file, 245, 1, 6052);
+    			add_location(br0, file, 250, 8, 6608);
+    			add_location(br1, file, 250, 14, 6614);
+    			add_location(br2, file, 250, 20, 6620);
     			attr_dev(div9, "class", "bar svelte-167qhvw");
-    			add_location(div9, file, 257, 2, 6751);
+    			add_location(div9, file, 252, 2, 6659);
     			attr_dev(div10, "id", "progress-bar");
     			attr_dev(div10, "class", "bar-overlay svelte-167qhvw");
-    			add_location(div10, file, 258, 2, 6778);
+    			add_location(div10, file, 253, 2, 6686);
     			attr_dev(p0, "id", "ct");
     			attr_dev(p0, "class", "current-time");
-    			add_location(p0, file, 259, 2, 6831);
-    			add_location(p1, file, 260, 2, 6876);
+    			add_location(p0, file, 254, 2, 6739);
+    			add_location(p1, file, 255, 2, 6784);
     			attr_dev(p2, "id", "sl");
     			attr_dev(p2, "class", "song-length");
-    			add_location(p2, file, 261, 2, 6890);
+    			add_location(p2, file, 256, 2, 6798);
     			attr_dev(div11, "class", "position-bar svelte-167qhvw");
-    			add_location(div11, file, 256, 1, 6721);
+    			add_location(div11, file, 251, 1, 6629);
     			attr_dev(footer, "class", "player svelte-167qhvw");
-    			add_location(footer, file, 245, 0, 5928);
+    			add_location(footer, file, 240, 0, 5836);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, link, anchor);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, t1, anchor);
     			insert_dev(target, nav, anchor);
     			append_dev(nav, div1);
     			append_dev(div1, div0);
-    			append_dev(nav, t3);
+    			append_dev(nav, t1);
     			append_dev(nav, div3);
     			append_dev(div3, div2);
     			append_dev(div2, label);
     			append_dev(label, input);
-    			append_dev(label, t4);
-    			insert_dev(target, t5, anchor);
+    			append_dev(label, t2);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, div6, anchor);
     			append_dev(div6, div5);
     			append_dev(div5, h1);
-    			append_dev(div5, t7);
+    			append_dev(div5, t5);
     			append_dev(div5, h20);
-    			append_dev(h20, t8);
-    			append_dev(div5, t9);
+    			append_dev(h20, t6);
+    			append_dev(div5, t7);
     			append_dev(div5, div4);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div4, null);
     			}
 
-    			insert_dev(target, t10, anchor);
+    			insert_dev(target, t8, anchor);
     			insert_dev(target, footer, anchor);
     			append_dev(footer, div7);
     			append_dev(div7, img0);
-    			append_dev(footer, t11);
+    			append_dev(footer, t9);
     			append_dev(footer, h21);
-    			append_dev(footer, t13);
+    			append_dev(footer, t11);
     			append_dev(footer, div8);
     			append_dev(div8, img1);
-    			append_dev(div8, t14);
+    			append_dev(div8, t12);
     			append_dev(div8, img2);
-    			append_dev(div8, t15);
+    			append_dev(div8, t13);
     			append_dev(div8, img3);
-    			append_dev(div8, t16);
+    			append_dev(div8, t14);
     			append_dev(div8, img4);
-    			append_dev(footer, t17);
+    			append_dev(footer, t15);
     			append_dev(footer, br0);
     			append_dev(footer, br1);
     			append_dev(footer, br2);
-    			append_dev(footer, t18);
+    			append_dev(footer, t16);
     			append_dev(footer, div11);
     			append_dev(div11, div9);
-    			append_dev(div11, t19);
+    			append_dev(div11, t17);
     			append_dev(div11, div10);
-    			append_dev(div11, t20);
+    			append_dev(div11, t18);
     			append_dev(div11, p0);
-    			append_dev(div11, t22);
+    			append_dev(div11, t20);
     			append_dev(div11, p1);
-    			append_dev(div11, t24);
+    			append_dev(div11, t22);
     			append_dev(div11, p2);
 
     			if (!mounted) {
@@ -760,9 +747,9 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*files*/ 1 && t8_value !== (t8_value = (/*files*/ ctx[0].length < 1
+    			if (dirty & /*files*/ 1 && t6_value !== (t6_value = (/*files*/ ctx[0].length < 1
     			? 'No suitable files have been found or no folder has been selected...'
-    			: '') + "")) set_data_dev(t8, t8_value);
+    			: '') + "")) set_data_dev(t6, t6_value);
 
     			if (dirty & /*files, player*/ 9) {
     				each_value = /*files*/ ctx[0];
@@ -791,14 +778,11 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(link);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(nav);
-    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div6);
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(t10);
+    			if (detaching) detach_dev(t8);
     			if (detaching) detach_dev(footer);
     			mounted = false;
     			run_all(dispose);
@@ -837,6 +821,7 @@ var app = (function () {
     	function changeDirectory() {
     		let firstFile = [...this.files].filter(f => f.type === "audio/mp3");
     		if ([...this.files].length < 1) return alert('No files found');
+    		if (!firstFile[0]) return;
 
     		// Get path to the music folder
     		let filePath = firstFile[0].path;
