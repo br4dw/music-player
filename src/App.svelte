@@ -120,7 +120,6 @@
 		flex-direction: row;
 		align-content: center;
 		align-items: center;
-		justify-content: space-between;
 		margin-left: 10px;
 	}
 	.progress-container {
@@ -137,6 +136,8 @@
 	}
 	.time-container div {
 		color: rgb(167, 166, 180);
+		margin-right: 2px;
+    	margin-left: 2px;
 	}
 	.bar {
 		position: relative;
