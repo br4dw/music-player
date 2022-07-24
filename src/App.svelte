@@ -167,7 +167,7 @@
 	let thumbnail = 'http://www.scottishculture.org/themes/scottishculture/images/music_placeholder.png';
 	
 	function changeDirectory() {
-		let types = ['.mp3', '.wav', '.ogg', '.flac']
+		let types = ['.mp3', '.wav', '.flac']
 		let firstFile = [...this.files].filter(f => f.type.includes('audio'))
 
 		if ([...this.files].length < 1) return alert('No files found');
