@@ -1,5 +1,6 @@
 import App from './App.svelte';
 const fs = window.require('fs');
+const dotenv = window.require('dotenv').config();
 
 const configPath = './src/config.json';
 const defaultConfig = {
@@ -28,7 +29,10 @@ fs.access(configPath, fs.F_OK, (accessError) => {
 
 const app = new App({
 	target: document.body,
-	props: { config: window.require(process.cwd() + '\\src\\config.json') }
+	props: {
+		config: window.require(process.cwd() + '\\src\\config.json'),
+		spotifyHost: process.env.SPOTIFY_HOST
+	}
 });
 
 export default app;

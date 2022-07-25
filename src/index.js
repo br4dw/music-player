@@ -13,11 +13,13 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1600,
     height: 600,
+    // icon: '../static/img/logo.ico',
     webPreferences: {
       nodeIntegration: true
     },
@@ -25,6 +27,8 @@ const createWindow = () => {
     titleBarStyle: 'hidden',
     frame: false
   });
+
+  mainWindow.setIcon(path.join(__dirname, '../static/img/logoV3.png'));
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, '../public/index.html'));
