@@ -482,7 +482,7 @@ var app = (function () {
     			add_location(h2, file, 116, 6, 3496);
     			attr_dev(div0, "class", "loading-files");
     			add_location(div0, file, 115, 5, 3461);
-    			attr_dev(div1, "class", "file svelte-1n5t38y");
+    			attr_dev(div1, "class", "file svelte-ktsfqg");
     			add_location(div1, file, 114, 4, 3436);
     		},
     		m: function mount(target, anchor) {
@@ -557,12 +557,12 @@ var app = (function () {
     			t2 = space();
     			img1 = element("img");
     			t3 = space();
-    			attr_dev(span, "class", "file-name svelte-1n5t38y");
+    			attr_dev(span, "class", "file-name svelte-ktsfqg");
     			add_location(span, file, 126, 7, 3777);
-    			attr_dev(div0, "class", "file-header svelte-1n5t38y");
+    			attr_dev(div0, "class", "file-header svelte-ktsfqg");
     			add_location(div0, file, 125, 6, 3743);
     			attr_dev(img0, "id", img0_id_value = /*file*/ ctx[23].raw + "-art");
-    			attr_dev(img0, "class", "album-art thumbnail svelte-1n5t38y");
+    			attr_dev(img0, "class", "album-art thumbnail svelte-ktsfqg");
 
     			if (!src_url_equal(img0.src, img0_src_value = /*file*/ ctx[23].thumb
     			? /*file*/ ctx[23].thumb
@@ -571,11 +571,11 @@ var app = (function () {
     			attr_dev(img0, "alt", "Art");
     			add_location(img0, file, 128, 6, 3845);
     			attr_dev(img1, "id", img1_id_value = /*file*/ ctx[23].raw);
-    			attr_dev(img1, "class", "icon file-play svelte-1n5t38y");
+    			attr_dev(img1, "class", "icon file-play svelte-ktsfqg");
     			if (!src_url_equal(img1.src, img1_src_value = "../static/icons/play.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Play");
     			add_location(img1, file, 129, 6, 3962);
-    			attr_dev(div1, "class", "file svelte-1n5t38y");
+    			attr_dev(div1, "class", "file svelte-ktsfqg");
     			add_location(div1, file, 124, 5, 3717);
     		},
     		m: function mount(target, anchor) {
@@ -641,7 +641,7 @@ var app = (function () {
     			div = element("div");
     			t0 = text("Loading Metadata for ");
     			t1 = text(/*currentFile*/ ctx[1]);
-    			attr_dev(div, "class", "loaded-file-meta svelte-1n5t38y");
+    			attr_dev(div, "class", "loaded-file-meta svelte-ktsfqg");
     			add_location(div, file, 119, 6, 3577);
     		},
     		m: function mount(target, anchor) {
@@ -819,49 +819,49 @@ var app = (function () {
     			t26 = space();
     			div15 = element("div");
     			div15.textContent = "00:00";
-    			attr_dev(img0, "class", "icon title-icon control-icon svelte-1n5t38y");
+    			attr_dev(img0, "class", "icon title-icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img0.src, img0_src_value = "../static/icons/minimise.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "-");
     			add_location(img0, file, 85, 1, 2438);
-    			attr_dev(img1, "class", "icon title-icon control-icon svelte-1n5t38y");
+    			attr_dev(img1, "class", "icon title-icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img1.src, img1_src_value = "../static/icons/maximise.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "[]");
     			add_location(img1, file, 86, 1, 2547);
-    			attr_dev(img2, "class", "icon title-icon control-icon svelte-1n5t38y");
+    			attr_dev(img2, "class", "icon title-icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img2.src, img2_src_value = "../static/icons/close.svg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "x");
     			add_location(img2, file, 87, 1, 2657);
-    			attr_dev(div0, "class", "title-container svelte-1n5t38y");
+    			attr_dev(div0, "class", "title-container svelte-ktsfqg");
     			add_location(div0, file, 84, 0, 2406);
-    			attr_dev(div1, "class", "nav-item accent svelte-1n5t38y");
+    			attr_dev(div1, "class", "nav-item accent svelte-ktsfqg");
     			add_location(div1, file, 93, 2, 2835);
-    			attr_dev(div2, "class", "left svelte-1n5t38y");
+    			attr_dev(div2, "class", "left svelte-ktsfqg");
     			add_location(div2, file, 92, 1, 2813);
     			attr_dev(input0, "type", "file");
     			attr_dev(input0, "webkitdirectory", "true");
     			attr_dev(input0, "directory", "");
-    			attr_dev(input0, "class", "svelte-1n5t38y");
+    			attr_dev(input0, "class", "svelte-ktsfqg");
     			add_location(input0, file, 99, 4, 2998);
-    			attr_dev(label, "class", "main-button svelte-1n5t38y");
+    			attr_dev(label, "class", "main-button svelte-ktsfqg");
     			add_location(label, file, 98, 3, 2965);
-    			attr_dev(div3, "class", "nav-item svelte-1n5t38y");
+    			attr_dev(div3, "class", "nav-item svelte-ktsfqg");
     			add_location(div3, file, 96, 2, 2911);
-    			attr_dev(div4, "class", "right svelte-1n5t38y");
+    			attr_dev(div4, "class", "right svelte-ktsfqg");
     			add_location(div4, file, 95, 1, 2888);
-    			attr_dev(nav, "class", "topnav svelte-1n5t38y");
+    			attr_dev(nav, "class", "topnav svelte-ktsfqg");
     			add_location(nav, file, 91, 0, 2790);
-    			attr_dev(h1, "class", "title svelte-1n5t38y");
+    			attr_dev(h1, "class", "title svelte-ktsfqg");
     			add_location(h1, file, 108, 2, 3197);
-    			attr_dev(h20, "class", "subtitle svelte-1n5t38y");
+    			attr_dev(h20, "class", "subtitle svelte-ktsfqg");
     			add_location(h20, file, 109, 2, 3236);
-    			attr_dev(div5, "class", "files svelte-1n5t38y");
+    			attr_dev(div5, "class", "files svelte-ktsfqg");
     			add_location(div5, file, 112, 2, 3383);
     			attr_dev(div6, "class", "spacer");
     			add_location(div6, file, 107, 1, 3173);
     			attr_dev(div7, "class", "centered");
     			add_location(div7, file, 106, 0, 3148);
     			attr_dev(img3, "id", "thumbnail");
-    			attr_dev(img3, "class", "thumbnail svelte-1n5t38y");
+    			attr_dev(img3, "class", "thumbnail svelte-ktsfqg");
 
     			if (!src_url_equal(img3.src, img3_src_value = /*Player*/ ctx[3].nowPlaying
     			? /*Player*/ ctx[3].nowPlaying.thumbnail
@@ -869,42 +869,42 @@ var app = (function () {
 
     			attr_dev(img3, "alt", "Thumbnail");
     			add_location(img3, file, 140, 2, 4242);
-    			attr_dev(div8, "class", "thumbnail svelte-1n5t38y");
+    			attr_dev(div8, "class", "thumbnail svelte-ktsfqg");
     			add_location(div8, file, 139, 1, 4215);
     			attr_dev(h21, "id", "title");
-    			attr_dev(h21, "class", "subtitle player-title svelte-1n5t38y");
+    			attr_dev(h21, "class", "subtitle player-title svelte-ktsfqg");
     			add_location(h21, file, 143, 2, 4409);
     			attr_dev(img4, "id", "previous");
-    			attr_dev(img4, "class", "icon control-icon svelte-1n5t38y");
+    			attr_dev(img4, "class", "icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img4.src, img4_src_value = "../static/icons/previous.svg")) attr_dev(img4, "src", img4_src_value);
     			attr_dev(img4, "alt", "Previous");
     			add_location(img4, file, 145, 3, 4525);
     			attr_dev(img5, "id", "pause");
-    			attr_dev(img5, "class", "icon control-icon svelte-1n5t38y");
+    			attr_dev(img5, "class", "icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img5.src, img5_src_value = "../static/icons/play.svg")) attr_dev(img5, "src", img5_src_value);
     			attr_dev(img5, "alt", "Pause");
     			add_location(img5, file, 146, 3, 4661);
     			attr_dev(img6, "id", "stop");
-    			attr_dev(img6, "class", "icon control-icon svelte-1n5t38y");
+    			attr_dev(img6, "class", "icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img6.src, img6_src_value = "../static/icons/stop.svg")) attr_dev(img6, "src", img6_src_value);
     			attr_dev(img6, "alt", "Stop");
     			add_location(img6, file, 147, 3, 4784);
     			attr_dev(img7, "id", "next");
-    			attr_dev(img7, "class", "icon control-icon svelte-1n5t38y");
+    			attr_dev(img7, "class", "icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img7.src, img7_src_value = "../static/icons/next.svg")) attr_dev(img7, "src", img7_src_value);
     			attr_dev(img7, "alt", "Next");
     			add_location(img7, file, 148, 3, 4907);
     			attr_dev(img8, "id", "loop");
-    			attr_dev(img8, "class", "icon control-icon svelte-1n5t38y");
+    			attr_dev(img8, "class", "icon control-icon svelte-ktsfqg");
     			if (!src_url_equal(img8.src, img8_src_value = "../static/icons/loop.svg")) attr_dev(img8, "src", img8_src_value);
     			attr_dev(img8, "alt", "Loop");
     			add_location(img8, file, 149, 3, 5027);
-    			attr_dev(div9, "class", "player-controls svelte-1n5t38y");
+    			attr_dev(div9, "class", "player-controls svelte-ktsfqg");
     			add_location(div9, file, 144, 2, 4491);
     			attr_dev(div10, "id", "base-bar");
-    			attr_dev(div10, "class", "bar svelte-1n5t38y");
+    			attr_dev(div10, "class", "bar svelte-ktsfqg");
     			add_location(div10, file, 153, 4, 5235);
-    			attr_dev(input1, "class", "slider svelte-1n5t38y");
+    			attr_dev(input1, "class", "slider svelte-ktsfqg");
     			attr_dev(input1, "id", "slider");
     			attr_dev(input1, "type", "range");
     			input1.value = "0";
@@ -913,25 +913,25 @@ var app = (function () {
     			attr_dev(input1, "step", ".1");
     			add_location(input1, file, 154, 4, 5274);
     			attr_dev(div11, "id", "progress-bar");
-    			attr_dev(div11, "class", "overlay-bar svelte-1n5t38y");
+    			attr_dev(div11, "class", "overlay-bar svelte-ktsfqg");
     			add_location(div11, file, 159, 4, 5461);
-    			attr_dev(div12, "class", "progress-container svelte-1n5t38y");
+    			attr_dev(div12, "class", "progress-container svelte-ktsfqg");
     			add_location(div12, file, 152, 3, 5197);
     			attr_dev(div13, "id", "ct");
-    			attr_dev(div13, "class", "current-time svelte-1n5t38y");
+    			attr_dev(div13, "class", "current-time svelte-ktsfqg");
     			add_location(div13, file, 162, 4, 5556);
-    			attr_dev(div14, "class", "svelte-1n5t38y");
+    			attr_dev(div14, "class", "svelte-ktsfqg");
     			add_location(div14, file, 163, 4, 5607);
     			attr_dev(div15, "id", "sl");
-    			attr_dev(div15, "class", "song-length svelte-1n5t38y");
+    			attr_dev(div15, "class", "song-length svelte-ktsfqg");
     			add_location(div15, file, 164, 4, 5625);
-    			attr_dev(div16, "class", "time-container svelte-1n5t38y");
+    			attr_dev(div16, "class", "time-container svelte-ktsfqg");
     			add_location(div16, file, 161, 3, 5522);
-    			attr_dev(div17, "class", "duration-container svelte-1n5t38y");
+    			attr_dev(div17, "class", "duration-container svelte-ktsfqg");
     			add_location(div17, file, 151, 2, 5160);
-    			attr_dev(div18, "class", "player-container svelte-1n5t38y");
+    			attr_dev(div18, "class", "player-container svelte-ktsfqg");
     			add_location(div18, file, 142, 1, 4375);
-    			attr_dev(footer, "class", "player svelte-1n5t38y");
+    			attr_dev(footer, "class", "player svelte-ktsfqg");
     			add_location(footer, file, 138, 0, 4189);
     		},
     		l: function claim(nodes) {

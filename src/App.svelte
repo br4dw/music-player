@@ -269,7 +269,7 @@
 		margin-top: 65px;
 	}
 	.file-play {
-		z-index: 10;
+		z-index: 1;
 		position: absolute;
 		right: 0;
 		top: 0;
